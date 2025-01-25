@@ -47,12 +47,12 @@ Debugging: Learned to debug complex systems by simulating and testing each compo
 
 Repository Structure
 Copy
-nand2tetris-projects/
-├── projects/
-│   ├── 01/  # Project 1: Basic Logic Gates
-│   ├── 02/  # Project 2: Combinational Chips
-│   ├── ...  # Other projects
-│   └── 11/  # Project 11: Compiler
+nand2tetris-projects/\n
+├── projects/\n
+│   ├── 01/  # Project 1: Basic Logic Gates\n
+│   ├── 02/  # Project 2: Combinational Chips\n
+│   ├── ...  # Other projects\n
+│   └── 11/  # Project 11: Compiler\n
 └── README.md
 
 Acknowledgments
