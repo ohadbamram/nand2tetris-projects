@@ -32,7 +32,7 @@ Clone the repository:
 
 bash
 Copy
-git clone https://github.com/yourusername/nand2tetris-projects.git
+git clone https://github.com/ohadbamram/nand2tetris-projects.git
 Navigate to the specific project folder (e.g., projects/01 for the first project).
 
 Use the online IDE tools (e.g., HDL simulator, assembler, or VM emulator) to test and run the projects.
