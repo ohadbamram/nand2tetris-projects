@@ -36,9 +36,11 @@ git clone https://github.com/yourusername/nand2tetris-projects.git
 Navigate to the specific project folder (e.g., projects/01 for the first project).
 
 Use the online IDE tools (e.g., HDL simulator, assembler, or VM emulator) to test and run the projects.
+
 IDE's URL: https://nand2tetris.github.io/web-ide/chip/
 
 Challenges and Learnings
+
 Understanding Low-Level Computing: Gained a deep understanding of how computers work at the hardware and software levels.
 
 Problem-Solving: Overcame challenges in designing efficient logic circuits and translating high-level concepts into low-level code.
@@ -56,5 +58,7 @@ nand2tetris-projects/
 └── README.md 
 ```
 Acknowledgments
+
 Nand2Tetris Course: Special thanks to the creators of the Nand2Tetris course for providing such an insightful and hands-on learning experience.
+
 Book: "The Elements of Computing Systems" by Noam Nisan and Shimon Schocken.
