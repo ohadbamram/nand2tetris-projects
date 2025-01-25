@@ -46,14 +46,14 @@ Problem-Solving: Overcame challenges in designing efficient logic circuits and t
 Debugging: Learned to debug complex systems by simulating and testing each component step-by-step.
 
 Repository Structure
-Copy
-nand2tetris-projects/\n
+
+'''nand2tetris-projects/\n
 ├── projects/\n
 │   ├── 01/  # Project 1: Basic Logic Gates\n
 │   ├── 02/  # Project 2: Combinational Chips\n
 │   ├── ...  # Other projects\n
 │   └── 11/  # Project 11: Compiler\n
-└── README.md
+└── README.md'''
 
 Acknowledgments
 Nand2Tetris Course: Special thanks to the creators of the Nand2Tetris course for providing such an insightful and hands-on learning experience.
