@@ -1,0 +1,243 @@
+/**
+
+XO - A "X-IGUL" game implementation in Jack.
+
+This class implements a simple "X-IGUL" game for two players, 'X' and 'O'.
+
+Players alternate turns, selecting positions on a 3x3 grid by pressing keys 1-9.
+
+The game detects winning conditions and announces the winner when achieved.
+
+Fields:
+
+Array squares: Represents the 3x3 grid, storing the current state of each cell (0 = empty, 1 = O, 2 = X).
+
+boolean playerO: Indicates the current player (true for 'O', false for 'X').
+*/
+
+class XO {
+
+    field Array squares;	 // Stores the state of the 3x3 board.
+	field boolean playerO;  // Tracks the current player: true = 'O', false = 'X'.
+	
+	/**
+	Constructor: Initializes the game board and sets up the game.
+	*/
+    constructor XO new() {
+        let squares = Array.new(9); // Creates an array for the board.
+		do drawBoard();             // Draws the game board.
+		do startingText();          // Displays initial instructions.
+		let playerO = false;        // Player 'O' starts first.
+		return this;
+    }
+	
+	/**
+	Handles player input to select a square and make a move.
+	*/
+	method void selection(){
+	
+		var int key; 
+		let playerO = ~playerO;  // Switch player after each selection.
+		while(true){
+			let key = Keyboard.keyPressed();
+			// Maps key presses (1-9) to board positions and validates moves.
+			if(key = 49) { // 1
+					if(squares[0] = 0) {
+						do nextTurn(0, 315, 60, playerO);
+						return;
+					}
+				}
+
+				if(key = 50) { // 2
+					if(squares[1] = 0) {
+						do nextTurn(1, 380, 60, playerO);
+						return;
+					}
+				}
+
+				if(key = 51) { // 3
+					if(squares[2] = 0) {
+						do nextTurn(2, 445, 60, playerO);
+						return;
+					}
+				}
+
+				if(key = 52) { // 4
+					if(squares[3] = 0) {
+						do nextTurn(3, 315, 120, playerO);
+						return;
+					}
+				}
+
+				if(key = 53) { // 5
+					if(squares[4] = 0) {
+						do nextTurn(4, 380, 120, playerO);
+						return;
+					}
+				}
+
+				if(key = 54) { // 6
+					if(squares[5] = 0) {
+						do nextTurn(5, 445, 120, playerO);
+						return;
+					}
+				}
+
+				if(key = 55) { // 7
+					if(squares[6] = 0) {
+						do nextTurn(6, 315, 180, playerO);
+						return;
+					}
+				}
+
+				if(key = 56) { // 8
+					if(squares[7] = 0) {
+						do nextTurn(7, 380, 180, playerO);
+						return;
+					}
+				}
+
+				if(key = 57) { // 9
+					if(squares[8] = 0) {
+						do nextTurn(8, 445, 180, playerO);
+						return;
+					}
+				}
+				
+		}
+			
+			return;
+	}
+	
+	/**
+  	Handles the next turn by placing the player's mark (X or O) on the board.
+	*/
+	method void nextTurn(int location, int x, int y, boolean playerO) {       
+        if(playerO){
+            let squares[location] = 1;
+			do drawO(x, y);
+        }else{
+            let squares[location] = 2;
+			do drawX(x, y);
+        }
+        return;
+    }
+	
+	/**
+	Draws the board on the screen.
+	*/
+	method void drawBoard(){
+		do Screen.drawLine(350, 22, 350, 214);
+        do Screen.drawLine(410, 22, 410, 214);
+        do Screen.drawLine(280, 86, 470, 86);
+        do Screen.drawLine(280, 150, 470, 150);
+        
+		return;
+	}
+	/**
+	Displays instructions and the initial board layout.
+	*/
+	method void startingText(){
+		do Output.printString("Welcome!"); 
+		do Output.println();
+		do Output.printString("Play by pressing the numbers 1-9");
+		do Output.println();
+		do Output.printString("1 | 2 | 3");
+		do Output.println();
+		do Output.printString("4 | 5 | 6");
+		do Output.println();
+		do Output.printString("7 | 8 | 9");
+		do Output.println();
+		do Output.printString("Take turns playing");
+		do Output.println();
+		do Output.printString("First player is O");
+		do Output.println();
+		do Output.printString("Good luck!");
+		do Output.println();
+		do Output.println();
+		return;
+	}
+	/**
+	Checks if the board is full (no empty squares).
+	*/
+	method boolean isFull() {
+      if((~(squares[0] = 0))
+        & (~(squares[1] = 0))
+        & (~(squares[2] = 0))
+        & (~(squares[3] = 0))
+        & (~(squares[4] = 0))
+        & (~(squares[5] = 0))
+        & (~(squares[6] = 0))
+        & (~(squares[7] = 0))
+        & (~(squares[8] = 0) )){
+            return true;
+        }
+        return false;
+  }
+	/**
+	Draws an 'O' symbol at the given coordinates.
+	*/
+	method void drawO(int x, int y){
+        do Screen.drawCircle(x, y, 20);
+        do Screen.setColor(false);
+        do Screen.drawCircle(x, y, 19);
+        do Screen.setColor(true);
+        return;
+    }
+	
+	/**
+	Draws an 'X' symbol at the given coordinates.
+	*/
+    method void drawX(int x, int y){
+        var int left, right, top, bottom;
+
+        let left = x - 15;
+        let right = x + 15;
+        let top = y + 15;
+        let bottom = y - 15;
+
+        do Screen.drawLine(left, top, right, bottom);
+        do Screen.drawLine(right, top, left, bottom);
+        return;
+    }
+	
+	/**
+	Checks if three values form a winning line.
+	*/
+	method boolean equalTriplet(int x, int y, int z){
+		if((x = 0) | (y = 0) | (z = 0)){
+			return false;
+		}
+		if((x = y) & (y = z)){
+		
+			if(playerO){
+				do Output.printString("O WINS!");
+				do Output.println();
+			}
+			else{
+				do Output.printString("X WINS!");
+				do Output.println();
+			}
+		
+			return true;
+    }
+    return false;
+  }
+	/**
+	Checks if any winning condition is met.
+	*/
+	method boolean win(){
+        if((equalTriplet(squares[0], squares[1], squares[2])) |
+            (equalTriplet(squares[3], squares[4], squares[5])) |
+            (equalTriplet(squares[6], squares[7], squares[8])) |
+            (equalTriplet(squares[0], squares[3], squares[6])) |
+            (equalTriplet(squares[1], squares[4], squares[7])) |
+            (equalTriplet(squares[2], squares[5], squares[8])) |
+            (equalTriplet(squares[0], squares[4], squares[8])) |
+            (equalTriplet(squares[2], squares[4], squares[6]))){
+          return true;
+        }
+        return false;
+  }
+	
+}

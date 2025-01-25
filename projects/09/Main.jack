@@ -1,0 +1,24 @@
+class Main {
+    function void main(){
+		// Initialize a XO object and a boolean win. 
+        var XO xo;
+        var boolean win;
+        let xo = XO.new();
+		let win = false;
+		
+		
+		// Run until there is a winner or a tie is achieved.
+        while(~win){
+		
+            if(xo.isFull()) {
+                do Output.printString("It's a tie, better luck next time!");
+                return;
+            }
+
+            do xo.selection();
+            let win = xo.win();
+            
+        }
+        return;
+    }
+}
